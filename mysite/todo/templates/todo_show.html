@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>todos</title>
+</head>
+<body></body>
+	{% for todo in todos %}
+
+	<div> Task title: {{todo.task_title}} </div>
+	<div> Task detail: {{todo.task}} </div>
+	<div> Task author: {{todo.author}} </div>
+	<form method="post">{% csrf_token %}<input type="hidden" name="del_id" value="{{todo.id}}"><input value="Delete" type="submit" name="todo_del"></form>
+	<br />
+
+	{% endfor %}
+	<br />
+	<br />
+	<br />
+	<div>
+		<form action="" method="post">
+			{% csrf_token %}
+			Task title : <input type="text" name="task_title"><br />
+			Task : <input type="text" name="task"><br />
+			Author : <select id="cars" name="author">
+			{% for user in userx %}	
+				<option value="{{ user }}"> {{ user }} </option>
+			{% endfor %}
+			</select><br />
+			<input type="submit" name="todo_sub">
+		</form>
+	</div>
+</body>
+</html>

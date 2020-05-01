@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>teacher_show</title>
+</head>
+<body>
+
+<div class="main">
+
+{% for tea in teacher %}
+
+<div>{{ tea.card_no }}</div>
+<div>{{ tea.name }}</div>
+<div>{{ tea.age }}</div>
+
+{% endfor %}
+
+</div>
+
+
+{% if teacher.has_other_pages %}
+  <ul class="pagination">
+    {% if teacher.has_previous %}
+      <li><a href="?page={{ teacher.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in teacher.paginator.page_range %}
+      {% if teacher.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if teacher.has_next %}
+      <li><a href="?page={{ teacher.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+</body>
+</html>

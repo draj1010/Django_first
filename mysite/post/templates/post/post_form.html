@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+</html>
+<body>
+
+    <form action="" method="post" id="post_form">
+        {% csrf_token %}
+        <input type="text" placeholder="post heading" name="post_heading">
+        <input type="text" placeholder="post text" name="post_text">
+        <input type="text" placeholder="post author" name="post_author">
+        <input type="submit" value="Go" >
+
+    </form>
+
+    <script>
+        console.log('Ready');
+
+        $(document).on('submit','#post_form',function(e){
+            e.preventDefault();
+
+            $.ajax(
+                {
+                    type:'POST',
+                    url:"",
+                    data:{
+                        post_heading: $('input[name=post_heading]').val(),
+                        post_text: $('input[name=post_text]').val(),
+                        post_author: $('input[name=post_author]').val(),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(), 
+                    },
+                    success : function(data)
+                    {
+                        
+                        console.log(data);
+                    }
+                })
+
+            });
+    </script>
+
+</body>

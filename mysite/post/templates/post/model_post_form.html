@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <form action="" method="POST" id="post_form2" >
+        {% csrf_token %}
+        {{form}}
+        <input type="submit">
+        <div class="message"></div>
+    </form>
+
+
+    <script>
+        console.log('Ready');
+
+        $(document).on('submit','#post_form2',function(e){
+            e.preventDefault();
+
+            $.ajax(
+                {
+                    type:'POST',
+                    url:"",
+                    data:{
+                        post_heading: $('input[name=post_heading]').val(),
+                        post_text: $('#id_post_text').val(),
+                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(), 
+                    },
+                    success : function(data)
+                    {
+                        console.log(data);
+                        if(data.success == 1)
+                        {
+                            $('.message').html(data.msg);
+                        }
+                        else if(data.success == 0)
+                        {
+                            $('.message').html(data.err);
+                        }
+                    }
+                })
+
+            });
+    </script>
+    </body>
+</html>
