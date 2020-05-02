@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'bootstr',
     'post',
     'products',
+    'book',
 ]
 
 MIDDLEWARE = [

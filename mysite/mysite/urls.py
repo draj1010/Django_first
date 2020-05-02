@@ -42,6 +42,7 @@ urlpatterns = [
     path('home/',include('home.urls')),
     path('bootstr/',include('bootstr.urls')),
     path('ajax/', include('post.urls')),
+    path('book/', include('book.urls'))
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
