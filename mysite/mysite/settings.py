@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'post',
     'products',
     'book',
+    'orm',
 ]
 
 MIDDLEWARE = [
